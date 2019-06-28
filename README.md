@@ -8,6 +8,7 @@
 <code>
 nohup java -jar kanban.jar --server.port=9000 >consoleMsg.log 2>&1 & <br>
 </code>
+
 # 运行截图
 ![](https://cdn.nlark.com/yuque/0/2019/png/195205/1561706378451-d42b87f7-01be-450c-9dd0-d4dbc95b32df.png)
 
