@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>敏捷看板• TodoList</title>
+    <link href="/static/app.css" rel="stylesheet" />
+    <style> [v-cloak] { display: none; } </style>
+</head>
+<body>
+
+<section class="todoapp">
+    <header class="header">
+        <h1>敏捷看板</h1>
+        <input class="new-todo"
+               autofocus autocomplete="on"
+               placeholder="点击这里添加待办事项，回车完成添加"
+               v-model="newTodo"
+               @keyup.enter="addTodo">
+    </header>
+    <section class="main" v-show="todos.length" v-cloak>
+        <input class="toggle-all" type="checkbox" v-model="allDone">
+        <ul class="todo-list">
+            <li v-for="todo in filteredTodos"
+                class="todo"
+                :key="todo.id"
+                :class="{ completed: todo.completed, editing: todo == editedTodo }">
+                <div class="view">
+                    <input  class="toggle" type="checkbox" v-model="todo.completed">
+                    <label @dblclick="editTodo(todo)">{{ todo.title }}</label>
+                    <button class="destroy" @click="removeTodo(todo)"></button>
+                </div>
+                <input class="edit" type="text"
+                       v-model="todo.title"
+                       v-todo-focus="todo == editedTodo"
+                       @blur="doneEdit(todo)"
+                       @keyup.enter="doneEdit(todo)"
+                       @keyup.esc="cancelEdit(todo)">
+            </li>
+        </ul>
+    </section>
+    <footer class="footer" v-show="todos.length" v-cloak>
+    <span class="todo-count">
+     还剩 <strong>{{ remaining }}</strong> {{ remaining | pluralize }}
+    </span>
+        <ul class="filters">
+            <li><a href="#/all" :class="{ selected: visibility == 'all' }">所有</a></li>
+            <li><a href="#/active" :class="{ selected: visibility == 'active' }">未完成</a></li>
+            <li><a href="#/completed" :class="{ selected: visibility == 'completed' }">已完成</a></li>
+        </ul>
+        <button class="clear-completed" @click="removeCompleted" v-show="todos.length > remaining">
+            清空完成
+        </button>
+    </footer>
+</section>
+<footer class="info">
+    <p>双击编辑待办事项</p>
+    <p>已完成请在事项列表左侧打钩</p>
+    <p>入群加微信号：cool-smiler ，备注：入群</p>
+    <p><a href="https://weibo.com/u/2219755213">新浪微博</a></p>
+    <p><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/195205/1561630642579-285b3688-9660-4e05-a554-592763f2d75e.jpeg?x-oss-process=image/resize,w_576"></p>
+    <p>Copyright © 2019 <a href="http://creativeview.cn">创享视界</a></p>
+</footer>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="/static/base.js"></script>
+<script src="/static/vue.min.js"></script>
+<script src="/static/app.js"></script>
+</body>
+</html>
