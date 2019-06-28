@@ -1,5 +1,5 @@
 # 敏捷看板
-### 专注于提高办公效率的极速在线简易敏捷看板。使用地址：https://xiewenlin.com/kanban/ <br>
+### 专注于提高办公效率的极速在线简易敏捷看板。免费体验地址：https://xiewenlin.com/kanban/ <br>
 ### 优点：<br>
 #### 1.在线、极速、简易的敏捷看板<br>
 #### 2.技术栈：Java8 + Netty4 + Vue.js<br>
